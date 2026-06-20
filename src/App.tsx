@@ -168,7 +168,7 @@ export default function App() {
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
 
                 {/* LEFT */}
-                <div className="lg:col-span-4 space-y-6  h-[115vh] overflow-scroll">
+                <div className="lg:col-span-4 space-y-6  md:h-[120vh] overflow-scroll">
                   <div className="p-6 rounded-2xl border border-zinc-900 bg-zinc-900/10 backdrop-blur-md">
                     <DynamicForm
                       activeType={activeType}
@@ -185,14 +185,14 @@ export default function App() {
                 </div>
 
                 {/* RIGHT */}
-                <div className="lg:col-span-8 self-start">
-                  <div className="sticky top-24">
-                    {/* <div className="bg-white/95 p-2 rounded-3xl border border-zinc-900/60"> */}
-                    <LivePreview
-                      formData={formData}
-                      activeType={activeType}
-                    />
-                    {/* </div> */}
+                <div className=" col-span-1 lg:col-span-8 self-start">
+                  <div className="w-full overflow-auto max-h-[85vh] bg-zinc-900 rounded-xl p-2">
+                    <div className="w-max">
+                      <LivePreview
+                        formData={formData}
+                        activeType={activeType}
+                      />
+                    </div>
                   </div>
                 </div>
 

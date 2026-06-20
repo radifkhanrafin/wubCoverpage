@@ -49,7 +49,9 @@ export default function DynamicForm({
 
   // ================= FIELD RENDER =================
   const renderField = (field: DocumentField) => {
-    const value = formData?.[field.id as keyof DocumentData] || '';
+    const raw = formData?.[field.id as keyof DocumentData];
+    // Normalize booleans to strings and ensure value is a string/number/undefined for inputs
+    const value = (raw === true || raw === false) ? String(raw) : (raw ?? '');
     const missing = isMissing(field);
 
     // ================= SELECT FIELD =================

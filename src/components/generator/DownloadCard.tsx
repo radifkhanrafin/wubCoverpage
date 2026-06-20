@@ -16,7 +16,6 @@ export default function PreviewWithDownload({
   const previewRef = useRef<HTMLDivElement>(null);
   const [isDownloading, setIsDownloading] = useState(false);
 
-  // 🔥 ei function-ta age missing chilo
   const waitForImagesAndFonts = async (container: HTMLElement) => {
     await document.fonts.ready;
 
@@ -39,7 +38,6 @@ export default function PreviewWithDownload({
 
     try {
       const element = previewRef.current;
-
       await waitForImagesAndFonts(element);
 
       const SCALE = 2;
@@ -48,11 +46,10 @@ export default function PreviewWithDownload({
         scale: SCALE,
         useCORS: true,
         backgroundColor: "#ffffff",
-        letterRendering: true,
-        width: element.scrollWidth,
-        height: element.scrollHeight,
-        windowWidth: element.scrollWidth,
-        windowHeight: element.scrollHeight,
+        width: 794,          // 🔥 fixed value direct dao, scrollWidth-er upor depend na kore
+        height: 1123,
+        windowWidth: 794,
+        windowHeight: 1123,
       });
 
       const imgData = canvas.toDataURL("image/png");
@@ -103,10 +100,12 @@ export default function PreviewWithDownload({
           width: "794px",
           minHeight: "1123px",
           background: "#ffffff",
-          position: "absolute",
+          position: "fixed",
           top: "-99999px",
           left: "-99999px",
+          zIndex: -1,
         }}
+        
       >
         <LivePreview formData={formData} activeType={activeType} />
       </div>

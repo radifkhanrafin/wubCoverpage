@@ -8,12 +8,12 @@ export default function Footer() {
         
         {/* Logo and tag */}
         <div className="flex items-center gap-3">
-          <div className="w-8 h-8 rounded-lg bg-violet-600 flex items-center justify-center">
-            <BookOpen className="w-4 h-4 text-white" />
+          <div className="w-8 h-8 rounded-lg  flex items-center justify-center">
+            <img src="https://i.ibb.co.com/CpWYscN8/World-University-of-Bangladesh-logo-removebg-preview.png" alt="" />
           </div>
           <div>
-            <span className="font-sans font-bold text-white tracking-tight">UniDoc Generator</span>
-            <p className="text-[10px] text-zinc-500 font-mono -mt-0.5">EST. 2026 • PRIVATE CONTEXT CLIENT DEVICE</p>
+            <span className="font-sans font-bold text-white tracking-tight">CovGen </span>
+            <p className="text-[10px] text-zinc-500 font-mono -mt-0.5">EST. 2026 •WUBCS</p>
           </div>
         </div>
 
@@ -30,7 +30,7 @@ export default function Footer() {
 
         {/* Copy */}
         <div className="text-center md:text-right text-zinc-600 text-xs">
-          <p>© 2026 UniDoc Generator. Built for academics worldwide. No cookies.</p>
+          <p>© 2026 CovGen. Built for academics worldwide. No cookies.</p>
         </div>
 
       </div>

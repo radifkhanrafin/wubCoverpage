@@ -46,7 +46,7 @@ export default function LivePreview({ formData, activeType }: LivePreviewProps) 
       </div>
 
       {/* Page */}
-      <div className="w-198.5 h-280.75 relative z-10 flex flex-col items-center text-center bg-white rounded-lg shadow-md p-24">
+      <div className="w-198.5 h-280.75 relative z-0 md:z-10 flex flex-col items-center text-center bg-white rounded-lg shadow-md p-24">
 
         {/* UNIVERSITY NAME */}
         <h1
@@ -68,7 +68,7 @@ export default function LivePreview({ formData, activeType }: LivePreviewProps) 
         {/* TITLE SECTION */}
         <div className="mt-4 space-y-1 text-black">
           <h2 className="text-[16px] font-bold">
-            {activeType.title} : {formData.experimentNumber || '00'}
+            {activeType.title} : {formData.experimentNumber || '_____'}
           </h2>
 
           <p className="text-[14px] my-2 font-semibold">
