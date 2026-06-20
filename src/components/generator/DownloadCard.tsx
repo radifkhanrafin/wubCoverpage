@@ -13,68 +13,61 @@ export default function PreviewWithDownload({
   formData,
   activeType,
 }: Props) {
-  const previewRef = useRef<HTMLDivElement>(null);
+  const pdfRef = useRef<HTMLDivElement>(null);
   const [isDownloading, setIsDownloading] = useState(false);
 
-  const waitForImagesAndFonts = async (container: HTMLElement) => {
+  // ✅ wait for fonts + images
+  const waitForAssets = async (container: HTMLElement) => {
     await document.fonts.ready;
 
     const images = Array.from(container.querySelectorAll("img"));
+
     await Promise.all(
-      images.map((img) =>
-        img.complete
-          ? Promise.resolve()
-          : new Promise((resolve) => {
-              img.onload = resolve;
-              img.onerror = resolve;
-            })
+      images.map(
+        (img) =>
+          img.complete
+            ? Promise.resolve()
+            : new Promise((res) => {
+                img.onload = res;
+                img.onerror = res;
+              })
       )
     );
   };
 
   const handleDownload = async () => {
-    if (!previewRef.current) return;
+    if (!pdfRef.current) return;
+
     setIsDownloading(true);
 
     try {
-      const element = previewRef.current;
-      await waitForImagesAndFonts(element);
+      const element = pdfRef.current;
 
-      const SCALE = 2;
+      await waitForAssets(element);
 
       const canvas = await html2canvas(element, {
-        scale: SCALE,
+        scale: 2,
         useCORS: true,
         backgroundColor: "#ffffff",
-        width: 794,          // 🔥 fixed value direct dao, scrollWidth-er upor depend na kore
+
+        // 🔥 CRITICAL FIX (mobile/desktop same output)
+        width: 794,
         height: 1123,
         windowWidth: 794,
         windowHeight: 1123,
+        scrollX: 0,
+        scrollY: 0,
       });
 
       const imgData = canvas.toDataURL("image/png");
+
       const pdf = new jsPDF("p", "mm", "a4");
 
-      const pageWidth = pdf.internal.pageSize.getWidth();
-      const pageHeight = pdf.internal.pageSize.getHeight();
+      const pageWidth = 210; // A4 mm
+      const pageHeight = 297;
 
-      const PX_TO_MM = 25.4 / 96;
-      const contentWidthMm = (canvas.width / SCALE) * PX_TO_MM;
-      const contentHeightMm = (canvas.height / SCALE) * PX_TO_MM;
+      pdf.addImage(imgData, "PNG", 0, 0, pageWidth, pageHeight);
 
-      const scaleFactor = Math.min(
-        pageWidth / contentWidthMm,
-        pageHeight / contentHeightMm,
-        1
-      );
-
-      const renderWidth = contentWidthMm * scaleFactor;
-      const renderHeight = contentHeightMm * scaleFactor;
-
-      const marginX = (pageWidth - renderWidth) / 2;
-      const marginY = (pageHeight - renderHeight) / 2;
-
-      pdf.addImage(imgData, "PNG", marginX, marginY, renderWidth, renderHeight);
       pdf.save(`${activeType?.title || "document"}.pdf`);
     } catch (err) {
       console.error("PDF generation failed:", err);
@@ -85,6 +78,8 @@ export default function PreviewWithDownload({
 
   return (
     <div className="space-y-4">
+
+      {/* DOWNLOAD BUTTON */}
       <button
         type="button"
         onClick={handleDownload}
@@ -94,21 +89,29 @@ export default function PreviewWithDownload({
         {isDownloading ? "Generating PDF..." : "Download PDF"}
       </button>
 
+      {/* 👇 IMPORTANT: ONLY FOR USER PREVIEW (responsive allowed) */}
+      <div className="overflow-auto">
+        <LivePreview formData={formData} activeType={activeType} />
+      </div>
+
+      {/* 👇 FIXED A4 RENDER (NO RESPONSIVE, NO MOBILE EFFECT) */}
       <div
-        ref={previewRef}
+        ref={pdfRef}
         style={{
-          width: "794px",
-          minHeight: "1123px",
-          background: "#ffffff",
           position: "fixed",
-          top: "-99999px",
           left: "-99999px",
-          zIndex: -1,
+          top: 0,
+
+          width: "794px",
+          height: "1123px",
+
+          background: "#ffffff",
+          overflow: "hidden",
         }}
-        
       >
         <LivePreview formData={formData} activeType={activeType} />
       </div>
+
     </div>
   );
 }
