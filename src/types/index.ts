@@ -32,7 +32,7 @@ export interface DocumentData {
   studentName: string;
   studentId: string;
   instructorDept: string;
-  instructorName: object | string;
+  instructorName: string;
   submissionDate: string;
 
   // Extra fields based on document types

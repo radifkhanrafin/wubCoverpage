@@ -22,25 +22,25 @@ export default function App() {
   const [selectedTypeId, setSelectedTypeId] = useState<string>('assignment');
 
   // Initialize with 'assignment' defaults
-const [formData, setFormData] = useState<DocumentData>(() => ({
-  universityName: '',
-  department: '',
-  courseName: '',
-  courseCode: '',
-  documentTitle: '',
-  subtitle: '',
-  studentName: '',
-  studentId: '',
-   instructorDept: '',
-  instructorName: '',
-  submissionDate: '',
-  themeColor: '#a855f7',
-  accentStyle: 'classic',
-  fontFamily: 'sans',
-  showBorder: true,
-  showWatermark: false,
-  scaleLogo: 1,
-}));
+  const [formData, setFormData] = useState<DocumentData>(() => ({
+    universityName: '',
+    department: '',
+    courseName: '',
+    courseCode: '',
+    documentTitle: '',
+    subtitle: '',
+    studentName: '',
+    studentId: '',
+    instructorDept: '',
+    instructorName: '',
+    submissionDate: '',
+    themeColor: '#a855f7',
+    accentStyle: 'classic',
+    fontFamily: 'sans',
+    showBorder: true,
+    showWatermark: false,
+    scaleLogo: 1,
+  }));
 
   const handleSelectDocType = (id: string) => {
     setSelectedTypeId(id);
@@ -54,9 +54,9 @@ const [formData, setFormData] = useState<DocumentData>(() => ({
 
   const handleFieldChange = (fieldId: string, value: any) => {
     setFormData(prev => ({
-  ...(prev || {}),
-  [fieldId]: value
-}));
+      ...(prev || {}),
+      [fieldId]: value
+    }));
   };
 
   const handleResetToDefaults = () => {
@@ -168,7 +168,7 @@ const [formData, setFormData] = useState<DocumentData>(() => ({
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
 
                 {/* LEFT */}
-                <div className="lg:col-span-5 space-y-6  h-[115vh] overflow-scroll">
+                <div className="lg:col-span-4 space-y-6  h-[115vh] overflow-scroll">
                   <div className="p-6 rounded-2xl border border-zinc-900 bg-zinc-900/10 backdrop-blur-md">
                     <DynamicForm
                       activeType={activeType}
@@ -185,14 +185,14 @@ const [formData, setFormData] = useState<DocumentData>(() => ({
                 </div>
 
                 {/* RIGHT */}
-                <div className="lg:col-span-7 self-start">
+                <div className="lg:col-span-8 self-start">
                   <div className="sticky top-24">
-                    <div className="bg-white/95 p-6 rounded-3xl border border-zinc-900/60">
+                    {/* <div className="bg-white/95 p-2 rounded-3xl border border-zinc-900/60"> */}
                       <LivePreview
                         formData={formData}
                         activeType={activeType}
                       />
-                    </div>
+                    {/* </div> */}
                   </div>
                 </div>
 
@@ -201,6 +201,15 @@ const [formData, setFormData] = useState<DocumentData>(() => ({
           )}
         </AnimatePresence>
       </main>
+
+<div className=' ml-20'>
+ <LivePreview
+        formData={formData}
+        activeType={activeType}
+      />
+</div>
+     
+
 
       {/* Modern Footer */}
       <Footer />

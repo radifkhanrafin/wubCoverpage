@@ -38,10 +38,10 @@ export default function DynamicForm({
   }, {});
 
   const sectionTitles: any = {
-    general: "1. General Institution",
-    academic: "2. Course Details",
-    content: "3. Report & Written Topics",
-    metadata: "4. Submission Logs"
+    general: "General Institution",
+    academic: "Course Details",
+    content: "Report & Written Topics",
+    metadata: "Submission Logs"
   };
 
   const isMissing = (field: DocumentField) =>
@@ -171,7 +171,7 @@ export default function DynamicForm({
             <button
               key={c.hex}
               onClick={() => onFieldChange('themeColor', c.hex)}
-              className="aspect-square rounded-lg border"
+              className="aspect-square w-full h-9 rounded-lg border"
               style={{ backgroundColor: c.hex }}
             >
               {formData.themeColor === c.hex && (
