@@ -18,7 +18,7 @@ export default function Navbar({ currentView, onNavigate }: NavbarProps) {
           id="nav_logo"
         >
           <div className="w-9 h-9 rounded-xl flex items-center justify-center shadow-lg shadow-violet-500/10 group-hover:scale-105 transition-all duration-200">
-           <img src="../../../assets/wub.png" alt="WUB Logo" />
+           <img src="https://i.ibb.co.com/CpWYscN8/World-University-of-Bangladesh-logo-removebg-preview.png" alt="WUB Logo" />
           </div>
           <div>
             <span className="font-sans font-bold tracking-tight text-white flex items-center gap-1.5 text-sm sm:text-base">

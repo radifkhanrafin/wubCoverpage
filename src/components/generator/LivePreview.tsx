@@ -59,7 +59,7 @@ export default function LivePreview({ formData, activeType }: LivePreviewProps) 
         {/* LOGO */}
         <div className="mt-4">
           <img
-            src='../../../assets/wub.png'
+            src='https://i.ibb.co.com/CpWYscN8 World-University-of-Bangladesh-logo-removebg-preview.png'
             alt="University Logo"
             className="w-60 h-auto object-contain mx-auto my-2"
           />
