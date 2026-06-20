@@ -185,7 +185,7 @@ export default function App() {
                 </div>
 
                 {/* RIGHT */}
-                <div className=" col-span-1 lg:col-span-8 self-start">
+                <div className=" col-span-1 lg:col-span-8 self-start hidden md:block">
                   <div className="w-full overflow-auto max-h-[85vh] bg-zinc-900 rounded-xl p-2">
                     <div className="w-max">
                       <LivePreview
