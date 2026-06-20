@@ -1,0 +1,8 @@
+{
+  "name": "University Document Generator",
+  "description": "A premium academic document creator for generating cover pages, homework assignments, lab reports, and projects with real-time preview and PDF or DOCX download support.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
