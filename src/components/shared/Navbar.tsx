@@ -1,6 +1,6 @@
 import React from 'react';
 import { BookOpen, Sparkles, FileText, ChevronRight } from 'lucide-react';
-
+ 
 interface NavbarProps {
   currentView: 'landing' | 'generator';
   onNavigate: (view: 'landing' | 'generator') => void;
@@ -17,12 +17,12 @@ export default function Navbar({ currentView, onNavigate }: NavbarProps) {
           className="flex items-center gap-2.5 cursor-pointer group"
           id="nav_logo"
         >
-          <div className="w-9 h-9 rounded-xl bg-violet-600 flex items-center justify-center shadow-lg shadow-violet-500/10 group-hover:scale-105 transition-all duration-200">
-            <BookOpen className="w-4.5 h-4.5 text-white" />
+          <div className="w-9 h-9 rounded-xl flex items-center justify-center shadow-lg shadow-violet-500/10 group-hover:scale-105 transition-all duration-200">
+           <img src="../../../assets/wub.png" alt="WUB Logo" />
           </div>
           <div>
             <span className="font-sans font-bold tracking-tight text-white flex items-center gap-1.5 text-sm sm:text-base">
-              UniDoc <span className="text-xs font-semibold px-2 py-0.5 rounded-full bg-white/5 text-zinc-400 border border-white/10">Generator</span>
+              CovGen <span className="text-xs font-semibold px-2 py-0.5 rounded-full bg-white/5 text-zinc-400 border border-white/10">Generator</span>
             </span>
             <p className="text-[10px] text-zinc-400 font-mono tracking-wider uppercase -mt-0.5">Premium Academic Suite</p>
           </div>

@@ -188,10 +188,10 @@ export default function App() {
                 <div className="lg:col-span-8 self-start">
                   <div className="sticky top-24">
                     {/* <div className="bg-white/95 p-2 rounded-3xl border border-zinc-900/60"> */}
-                      <LivePreview
-                        formData={formData}
-                        activeType={activeType}
-                      />
+                    <LivePreview
+                      formData={formData}
+                      activeType={activeType}
+                    />
                     {/* </div> */}
                   </div>
                 </div>
@@ -202,13 +202,8 @@ export default function App() {
         </AnimatePresence>
       </main>
 
-<div className=' ml-20'>
- <LivePreview
-        formData={formData}
-        activeType={activeType}
-      />
-</div>
-     
+
+
 
 
       {/* Modern Footer */}

@@ -68,12 +68,12 @@ export default function LivePreview({ formData, activeType }: LivePreviewProps) 
         {/* TITLE SECTION */}
         <div className="mt-4 space-y-1 text-black">
           <h2 className="text-[16px] font-bold">
-            {activeType.title} : {formData.experimentNumber || '02'}
+            {activeType.title} : {formData.experimentNumber || '00'}
           </h2>
 
           <p className="text-[14px] my-2 font-semibold">
             {formData.documentTitle ||
-              'Standardization of Hydrochloric Acid with standard sodium hydroxide solution.'}
+              'write your topic here'}
           </p>
         </div>
 
